@@ -1,4 +1,4 @@
-module PeercoinBalanceUpdater
+module DevcoinBalanceUpdater
   COIN = 1000000 # ppcoin/src/util.h
 
   def self.work
