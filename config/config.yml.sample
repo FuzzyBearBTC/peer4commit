@@ -2,12 +2,12 @@ github:
   key: "111111111111"
   secret: "111111111111"  
 
-peercoin:
+devcoin:
   username: rpcuser
   password: rpcpassword
   host: localhost
   port: 9904
-  daemon: /path/to/ppcoin/src/ppcoind
+  daemon: /path/to/devcoin/src/devcoind
 
 devise:
   secret: "111111111111"
@@ -38,8 +38,8 @@ min_payout: 1.0 # in PPC
 our_fee: 0.05
 tipper_delay: "1.hour"
 
-address_versions: # 55/117 for peercoin, 111/196 for testnet, see base58.h
+address_versions: # 55/117 for devcoin, 111/196 for testnet, see base58.h
   - 111
   - 196
 
-canonical_host: peer4commit.example.com # will redirect all other hostnames to this one
+canonical_host: dev4commit.example.com # will redirect all other hostnames to this one
