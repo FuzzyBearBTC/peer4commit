@@ -1,6 +1,6 @@
-class PeercoinDaemon
+class DevcoinDaemon
   def self.instance
-    @peercoin_daemon ||= PeercoinDaemon.new(CONFIG['peercoin'])
+    @devcoin_daemon ||= DevcoinDaemon.new(CONFIG['devcoin'])
   end
 
   class RPCError < StandardError
@@ -19,7 +19,7 @@ class PeercoinDaemon
 
   def rpc(command, *params)
     %w( username password port host ).each do |field|
-      raise "No #{field} provided in peercoin config" if config[field].blank?
+      raise "No #{field} provided in devcoin config" if config[field].blank?
     end
 
     uri = URI::HTTP.build(host: config['host'], port: config['port'].to_i)
