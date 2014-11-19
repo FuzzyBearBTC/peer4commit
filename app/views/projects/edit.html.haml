@@ -1,0 +1,7 @@
+- content_for :title do
+  = @project.name
+
+%h1= @project.name
+.row
+  .col-md-12
+    = render "form"

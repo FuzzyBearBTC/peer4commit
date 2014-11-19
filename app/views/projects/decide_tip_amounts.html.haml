@@ -1,0 +1,29 @@
+%h1 Decide tip amounts
+%p
+  Project balance: #{btc_human @project.available_amount}
+= bootstrap_form_for @project, url: decide_tip_amounts_project_path(@project) do |f|
+  %table.table.table-hover.decide-tip-amounts-table
+    %thead
+      %tr
+        %th Commit
+        %th Author
+        %th Message
+        %th Percentage of balance
+        %th Free amount
+    %tbody
+      = f.fields_for(:tips, @project.tips.select(&:was_undecided?)) do |tip_fields|
+        = tip_fields.hidden_field :id
+        - tip = tip_fields.object
+        - next unless tip.user
+        %tr
+          %td= link_to commit_tag(tip.commit), tip.commit_url
+          %td= tip.user.nickname
+          %td= simple_format tip.commit_message
+          %td.col-sm-2
+            - options = [["Free: 0%", "0"], ["Tiny: 0.1%", "0.1"], ["Small: 0.5%", "0.5"], ["Normal: 1%", "1"], ["Big: 2%", "2"], ["Huge: 5%", "5"]]
+            = tip_fields.select :decided_amount_percentage, options, hide_label: true, include_blank: true
+          %td.col-sm-2
+            = tip_fields.text_field :decided_free_amount, inline: true, hide_label: true, append: "PPC"
+
+  .text-center
+    = f.submit 'Send the selected tip amounts'

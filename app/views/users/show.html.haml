@@ -1,19 +1,18 @@
 %h1= @user.name
 %p
-  %strong Balance
-%p
-  = btc_human @user.balance
-%p
-  %small
-    You will get the money of your tips when the project they belong hits the threshold of
-    = btc_human CONFIG["min_payout"].to_d * PeercoinBalanceUpdater::COIN
-%p
-  %strong E-mail
-%p= @user.email
-= form_for @user, html: {role: 'form', class: 'form-inline"'} do |f|
-  - if @user.errors.size > 0
-    .alert.alert-danger Peercoin address is invalid.
-  .form-group
-    = f.label :bitcoin_address
-    = f.text_field :bitcoin_address, class: 'form-control', placeholder: 'Your peercoin address'
-  = f.button :update, class: 'btn btn-default'
+  %strong Identifier:
+  = @user.identifier
+
+- if @user.nickname.present?
+  %p
+    %strong GitHub account:
+    = link_to @user.nickname, "https://github.com/#{@user.nickname}"
+
+- if (projects = @user.projects).any?
+  %h2 Projects
+  %ul
+    - projects.each do |project|
+      %li= link_to project.to_label, project
+
+%hr
+= commontator_thread(@user)

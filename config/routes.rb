@@ -1,74 +1,46 @@
 T4c::Application.routes.draw do
+  mount Commontator::Engine => '/commontator'
 
   root 'home#index'
+
+  get 'audit' => 'home#audit'
+  get 'faq' => 'home#faq'
+
+  devise_for :users,
+    controllers: {
+      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "registrations",
+    }
 
   resources :users, :only => [:show, :update, :index] do
     collection do
       get :login
+      get :suggestions
+    end
+    member do
+      post :send_tips_back
+      post :send_email_address_request
+      get :set_password_and_address
+      patch :set_password_and_address
     end
   end
-  resources :projects, :only => [:show, :index, :create] do
+  resources :projects, :only => [:new, :show, :index, :create, :edit, :update] do
     resources :tips, :only => [:index]
+    resources :distributions, :only => [:new, :create, :show, :index, :edit, :update] do
+      get :new_recipient_form, on: :collection
+      post :send_transaction, on: :member
+    end
     member do
       get :qrcode
+      get :decide_tip_amounts
+      patch :decide_tip_amounts
+      get :commit_suggestions
+      get :github_user_suggestions
+      get :donate
+      post :donate
+      get :donors
     end
   end
   resources :tips, :only => [:index]
-  resources :withdrawals, :only => [:index]
-
-  devise_for :users,
-    :controllers => {
-      :omniauth_callbacks => "users/omniauth_callbacks"
-    }
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-  
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :distributions, :only => [:index]
 end
