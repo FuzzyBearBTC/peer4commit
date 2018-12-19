@@ -43,7 +43,7 @@ class Distribution < ActiveRecord::Base
   def generate_data
     outs = Hash.new { 0.to_d }
     tips.each do |tip|
-      outs[tip.user.bitcoin_address] += tip.amount.to_d / COIN
+      outs[tip.user.bitcoin_address] += tip.amount.to_d / COIN if tip.amount > 0
     end
     outs.to_json
   end
@@ -64,7 +64,7 @@ class Distribution < ActiveRecord::Base
     tips = project.tips.to_a
     tips -= self.tips
     tips += self.tips
-    if project.total_deposited < tips.map(&:amount).compact.sum
+    if project.total_deposited < tips.reject(&:refunded?).map(&:amount).compact.sum
       errors.add(:base, "Not enough funds")
     end
   end

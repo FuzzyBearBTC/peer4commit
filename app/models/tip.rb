@@ -4,7 +4,7 @@ class Tip < ActiveRecord::Base
   belongs_to :project, inverse_of: :tips
   belongs_to :reason, polymorphic: true
 
-  validates :amount, numericality: {greater_or_equal_than: 0, allow_nil: true}
+  validate :validate_amount_is_positive
   validate :validate_reason
 
   scope :not_sent,      -> { where(distribution_id: nil) }
@@ -48,7 +48,7 @@ class Tip < ActiveRecord::Base
 
   scope :with_address,  -> { joins(:user).where.not('users.bitcoin_address' => [nil, ""]) }
   def with_address?
-    user.bitcoin_address.present?
+    user.present? and user.bitcoin_address.present?
   end
 
   scope :decided,       -> { where.not(amount: nil) }
@@ -83,9 +83,9 @@ class Tip < ActiveRecord::Base
   attr_accessor :decided_free_amount
 
   def notify_user
-    if amount and amount > 0 and user.bitcoin_address.blank? and !user.unsubscribed
+    if amount and amount > 0 and user and user.bitcoin_address.blank? and !user.unsubscribed
       if user.notified_at.nil? or user.notified_at < 30.days.ago
-        UserMailer.new_tip(user, self).deliver
+        UserMailer.new_tip(user, self).deliver_now
         user.touch :notified_at
       end
     end
@@ -110,17 +110,11 @@ class Tip < ActiveRecord::Base
 
   def self.build_from_commit(commit)
     if commit.username.present?
-      user = User.enabled.where(nickname: commit.username).first_or_initialize(email: commit.email)
+      user = User.enabled.where(nickname: commit.username).first
     elsif commit.email =~ Devise::email_regexp
-      user = User.enabled.where(email: commit.email).first_or_initialize
-    else
-      return nil
+      user = User.enabled.where(email: commit.email).first
     end
-    if user.new_record?
-      raise "Invalid email address" unless user.email =~ Devise::email_regexp
-      user.skip_confirmation_notification!
-      user.save!
-    end
+    return nil unless user
     new(user_id: user.id, reason: commit)
   end
 
@@ -132,6 +126,12 @@ class Tip < ActiveRecord::Base
       errors.add(:reason_id, :invalid) unless project.commits.include?(reason)
     else
       errors.add(:reason_type, :invalid)
+    end
+  end
+
+  def validate_amount_is_positive
+    if amount and amount < 0
+      errors.add(:amount, "must be positive")
     end
   end
 end

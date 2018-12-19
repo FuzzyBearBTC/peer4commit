@@ -35,6 +35,7 @@ class Project < ActiveRecord::Base
   end
 
   def get_commits
+    return [] if full_name.blank? or full_name !~ %r{\A[-\w.]+/[-\w.]+\Z}
     begin
       commits = Timeout::timeout(90) do
         client = Octokit::Client.new \
@@ -44,7 +45,8 @@ class Project < ActiveRecord::Base
         client.commits(full_name)
       end
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
-           Errno::ETIMEDOUT, Faraday::Error::ConnectionFailed, Octokit::Forbidden => e
+           Errno::ETIMEDOUT, Faraday::Error::ConnectionFailed, Octokit::Forbidden,
+           Octokit::Conflict, Octokit::ClientError => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
     rescue StandardError => e
       if CONFIG["airbrake"]
@@ -102,25 +104,9 @@ class Project < ActiveRecord::Base
     end
     user ||= User.enabled.find_by(email: email)
 
-    if (next_tip_amount > 0) &&
-        Tip.find_by(commit: commit.sha).nil?
-
-      # create user
-      unless user
-        generated_password = Devise.friendly_token.first(8)
-        user = User.new(
-          email: email,
-          password: generated_password,
-          name: commit.commit.author.name,
-        )
-        user.skip_confirmation_notification!
-      end
-
-      if nickname.present? and user.nickname.blank?
-        user.nickname = nickname
-      end
-
-      user.save!
+    if (next_tip_amount > 0) and
+        Tip.find_by(commit: commit.sha).nil? and
+        user
 
       if hold_tips
         amount = nil
@@ -237,5 +223,9 @@ class Project < ActiveRecord::Base
 
   def to_label
     name.presence || id.to_s
+  end
+
+  def not_sent_distributions_amount
+    distributions.select { |d| d.is_error or !d.sent? }.map(&:tips).flatten.map(&:amount).compact.sum
   end
 end

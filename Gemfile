@@ -1,19 +1,21 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0.2'
+gem 'rails', '~> 4.2.0'
 
 # Databases
 gem 'sqlite3', group: :development
 gem 'mysql2', group: :mysql
-gem 'pg', group: :postgresql
+gem 'pg', '~> 0.20.0', group: :postgresql # fixed version to avoid warning, see https://stackoverflow.com/questions/44607324/installing-newest-version-of-rails-4-with-postgres-the-pgconn-pgresult-and-p
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'haml-rails'
-gem "less-rails"
 
-gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+# use fork to remove warning, see https://github.com/metaskills/less-rails/issues/122 and https://github.com/metaskills/less-rails/pull/137
+gem "less-rails", git: 'https://github.com/brendon/less-rails.git', branch: 'fix-sprockets-loading'
+
+gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
 gem 'kaminari'
 
@@ -21,7 +23,7 @@ gem 'kaminari'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
@@ -41,10 +43,11 @@ group :doc do
 end
 
 gem 'devise'
+gem 'test_after_commit', :group => :test # https://github.com/plataformatec/devise/blob/master/CHANGELOG.md#410
 gem 'omniauth'
-gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
+gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', branch: 'provide_emails'
 gem 'cancancan'
-gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
+gem 'twitter_bootstrap_form_for', git: 'https://github.com/stouset/twitter_bootstrap_form_for.git'
 
 gem 'octokit'
 
@@ -59,7 +62,7 @@ gem 'octokit'
 
 group :development do
   gem 'capistrano', '~> 3.0'
-  gem 'capistrano-rvm', github: 'capistrano/rvm'
+  gem 'capistrano-rvm', git: 'https://github.com/capistrano/rvm.git'
   gem 'capistrano-bundler', '>= 1.1.0'
   gem 'capistrano-rails'
   gem 'quiet_assets'
@@ -71,7 +74,7 @@ gem 'whenever'
 gem 'rqrcode-rails3'
 gem 'exception_notification'
 gem 'rack-canonical-host'
-gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
 gem 'rails_autolink'
 gem 'redcarpet'
@@ -90,3 +93,10 @@ group :test do
   gem 'timecop'
   gem 'capybara-screenshot'
 end
+gem 'awesome_print', group: [:development, :test]
+gem 'commonmarker'
+gem 'rack', '~> 1.6.11'
+gem "sprockets", ">= 3.7.2"
+gem "ffi", ">= 1.9.24"
+gem "loofah", ">= 2.2.3"
+gem "rails-html-sanitizer", ">= 1.0.4"

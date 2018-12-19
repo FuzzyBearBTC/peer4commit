@@ -49,15 +49,7 @@ class DistributionsController < ApplicationController
       user = User.enabled.where(nickname: params[:user][:nickname]).first_or_initialize
       if user.new_record?
         raise "Invalid GitHub user" unless user.valid_github_user?
-        user.confirm!
-        user.save!
-      end
-      @tips << Tip.new(user: user)
-    elsif params[:user] and params[:user][:email].present?
-      user = User.enabled.where(email: params[:user][:email]).first_or_initialize
-      if user.new_record?
-        raise "Invalid email address" unless user.email =~ Devise::email_regexp
-        user.skip_confirmation_notification!
+        user.confirm
         user.save!
       end
       @tips << Tip.new(user: user)

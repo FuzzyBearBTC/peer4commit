@@ -13,6 +13,8 @@ Feature: A project collaborator distribute to commit authors
     And the author of commit "BBB" is "yugo"
     And the message of commit "BBB" is "Tiny change"
     And the author of commit "CCC" is "gaal"
+    And a GitHub user "yugo" who has set his address to "mxWfjaZJTNN5QKeZZYQ5HW3vgALFBsnuG1"
+    And a GitHub user "gaal" who has set his address to "mi9SLroAgc8eUNuLwnZmdyqWdShbNtvr3n"
 
     Given I'm logged in as "seldon"
     And I go to the project page
@@ -36,14 +38,9 @@ Feature: A project collaborator distribute to commit authors
     And I click on "Save"
 
     Then I should see these distribution lines:
-      | recipient | reason                    | address                   | amount | percentage |
-      | yugo      | Commit BBB: Tiny change   |                           |    0.5 |        100 |
+      | recipient | reason                    | address                            | amount | percentage |
+      | yugo      | Commit BBB: Tiny change   | mxWfjaZJTNN5QKeZZYQ5HW3vgALFBsnuG1 |    0.5 |        100 |
     And I should see "Total amount: 0.50 PPC"
-    When I click on "Send email request to provide an address"
-    Then I should see "Request sent"
-    And there should be 1 email sent
-    And an email should have been sent to "yugo@example.com"
-
     When the new commits are read
 
     When I go to the project page
@@ -71,20 +68,6 @@ Feature: A project collaborator distribute to commit authors
     And I select the commit recipients "Commits not rewarded"
     Then the distribution form should have these recipients:
       | recipient        | reason                    | amount |
-      | yugo@example.com | Commit BBB: Tiny change   |        |
-
-    And I fill the amount to "yugo@example.com" with "0.5"
-    And I save the distribution
-
-    Then I should see these distribution lines:
-      | recipient        | reason                    | address                   | amount | percentage |
-      | yugo@example.com | Commit BBB: Tiny change   |                           |    0.5 |        100 |
-    And I should see "Total amount: 0.50 PPC"
-    And there should be 0 email sent
-    When I click on "Send email request to provide an address"
-    Then I should see "Request sent"
-    And there should be 1 email sent
-    And an email should have been sent to "yugo@example.com"
 
   @javascript
   Scenario: Distribute to a single commit
@@ -98,6 +81,8 @@ Feature: A project collaborator distribute to commit authors
     And the author of commit "170ed604f287b9fec397389d0b1b3f7d15b82276" is "yugo"
     And the message of commit "170ed604f287b9fec397389d0b1b3f7d15b82276" is "Tiny change"
     And the author of commit "1329394df2595739d652528d48fe6db66c67e1e8" is "gaal"
+    And a GitHub user "yugo" who has set his address to "mxWfjaZJTNN5QKeZZYQ5HW3vgALFBsnuG1"
+    And a GitHub user "gaal" who has set his address to "mi9SLroAgc8eUNuLwnZmdyqWdShbNtvr3n"
 
     Given I'm logged in as "seldon"
     When the new commits are read
@@ -117,6 +102,6 @@ Feature: A project collaborator distribute to commit authors
     And I click on "Save"
 
     Then I should see these distribution lines:
-      | recipient | reason                           | address                   | amount    | percentage |
-      | yugo      | Commit 170ed604f2: Tiny change   |                           |       0.5 |            |
-      | gaal      | Commit 1329394df2: Some changes  |                           | Undecided |            |
+      | recipient | reason                           | address                            | amount    | percentage |
+      | yugo      | Commit 170ed604f2: Tiny change   | mxWfjaZJTNN5QKeZZYQ5HW3vgALFBsnuG1 |       0.5 |            |
+      | gaal      | Commit 1329394df2: Some changes  | mi9SLroAgc8eUNuLwnZmdyqWdShbNtvr3n | Undecided |            |
