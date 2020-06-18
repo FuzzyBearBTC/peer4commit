@@ -78,7 +78,7 @@ gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen s
 gem 'html_pipeline_rails'
 gem 'rails_autolink'
 gem 'redcarpet'
-gem 'sanitize'
+gem 'sanitize', '>= 5.2.1'
 gem 'twitter-typeahead-rails'
 gem 'commontator', '~> 4.6.0'
 gem 'compass-rails'
