@@ -84,7 +84,7 @@ gem 'commontator', '~> 4.6.0'
 gem 'compass-rails'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 2.1.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'rspec-rails'
