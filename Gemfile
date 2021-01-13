@@ -44,7 +44,7 @@ end
 
 gem 'devise'
 gem 'test_after_commit', :group => :test # https://github.com/plataformatec/devise/blob/master/CHANGELOG.md#410
-gem 'omniauth'
+gem 'omniauth', '>= 2.0.0'
 gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', branch: 'provide_emails'
 gem 'cancancan'
 gem 'twitter_bootstrap_form_for', git: 'https://github.com/stouset/twitter_bootstrap_form_for.git'
@@ -77,7 +77,7 @@ gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
 gem 'rails_autolink'
-gem 'redcarpet'
+gem 'redcarpet', '>= 3.5.1'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
 gem 'commontator', '~> 4.6.0'
