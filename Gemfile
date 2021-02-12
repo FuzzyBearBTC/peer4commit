@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -76,11 +76,11 @@ gem 'exception_notification'
 gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
-gem 'rails_autolink'
+gem 'rails_autolink', '>= 1.1.6'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.6.1'
 gem 'compass-rails'
 
 group :test do
