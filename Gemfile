@@ -49,7 +49,7 @@ gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', 
 gem 'cancancan'
 gem 'twitter_bootstrap_form_for', git: 'https://github.com/stouset/twitter_bootstrap_form_for.git'
 
-gem 'octokit'
+gem 'octokit', '>= 4.7.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -73,7 +73,7 @@ gem 'httparty'
 gem 'whenever'
 gem 'rqrcode-rails3'
 gem 'exception_notification'
-gem 'rack-canonical-host'
+gem 'rack-canonical-host', '>= 0.2.3'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
 gem 'rails_autolink'
@@ -84,14 +84,14 @@ gem 'commontator', '~> 4.6.0'
 gem 'compass-rails'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 1.5.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'poltergeist'
+  gem 'poltergeist', '>= 1.15.0'
   gem 'timecop'
-  gem 'capybara-screenshot'
+  gem 'capybara-screenshot', '>= 1.0.14'
 end
 gem 'awesome_print', group: [:development, :test]
 gem 'commonmarker'
