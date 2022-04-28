@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.2.7', '>= 5.2.7.1'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -42,7 +42,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'devise'
+gem 'devise', '>= 4.4.2'
 gem 'test_after_commit', :group => :test # https://github.com/plataformatec/devise/blob/master/CHANGELOG.md#410
 gem 'omniauth'
 gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', branch: 'provide_emails'
@@ -80,11 +80,11 @@ gem 'rails_autolink'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.6.1'
 gem 'compass-rails'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 1.6.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'rspec-rails'
