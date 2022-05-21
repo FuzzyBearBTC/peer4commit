@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.11'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -80,7 +80,7 @@ gem 'rails_autolink'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.6.1'
 gem 'compass-rails'
 
 group :test do
