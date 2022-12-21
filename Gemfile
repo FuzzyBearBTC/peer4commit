@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.11'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -9,7 +9,7 @@ gem 'mysql2', group: :mysql
 gem 'pg', '~> 0.20.0', group: :postgresql # fixed version to avoid warning, see https://stackoverflow.com/questions/44607324/installing-newest-version-of-rails-4-with-postgres-the-pgconn-pgresult-and-p
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 6.0.0'
 gem 'haml-rails'
 
 # use fork to remove warning, see https://github.com/metaskills/less-rails/issues/122 and https://github.com/metaskills/less-rails/pull/137
@@ -80,7 +80,7 @@ gem 'rails_autolink'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.6.1'
 gem 'compass-rails'
 
 group :test do
@@ -96,7 +96,7 @@ end
 gem 'awesome_print', group: [:development, :test]
 gem 'commonmarker'
 gem 'rack', '~> 1.6.11'
-gem "sprockets", ">= 3.7.2"
+gem "sprockets", ">= 4.2.0"
 gem "ffi", ">= 1.9.24"
 gem "loofah", ">= 2.2.3"
 gem "rails-html-sanitizer", ">= 1.0.4"
