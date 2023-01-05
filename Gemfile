@@ -69,7 +69,7 @@ group :development do
 end
 
 gem 'airbrake'
-gem 'httparty'
+gem 'httparty', '>= 0.21.0'
 gem 'whenever'
 gem 'rqrcode-rails3'
 gem 'exception_notification'
