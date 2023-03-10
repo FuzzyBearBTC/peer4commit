@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.0.0'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -80,7 +80,7 @@ gem 'rails_autolink'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.6.1'
 gem 'compass-rails'
 
 group :test do
@@ -95,7 +95,7 @@ group :test do
 end
 gem 'awesome_print', group: [:development, :test]
 gem 'commonmarker'
-gem 'rack', '~> 1.6.11'
+gem 'rack', '~> 2.0.9', '>= 2.0.9.3'
 gem "sprockets", ">= 3.7.2"
 gem "ffi", ">= 1.9.24"
 gem "loofah", ">= 2.2.3"
