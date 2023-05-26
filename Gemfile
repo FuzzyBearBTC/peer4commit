@@ -94,7 +94,7 @@ group :test do
   gem 'capybara-screenshot'
 end
 gem 'awesome_print', group: [:development, :test]
-gem 'commonmarker'
+gem 'commonmarker', '>= 0.23.9'
 gem 'rack', '~> 1.6.11'
 gem "sprockets", ">= 3.7.2"
 gem "ffi", ">= 1.9.24"
