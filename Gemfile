@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.4'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -9,8 +9,8 @@ gem 'mysql2', group: :mysql
 gem 'pg', '~> 0.20.0', group: :postgresql # fixed version to avoid warning, see https://stackoverflow.com/questions/44607324/installing-newest-version-of-rails-4-with-postgres-the-pgconn-pgresult-and-p
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'haml-rails'
+gem 'sass-rails', '>= 5.0.8'
+gem 'haml-rails', '>= 2.0.0'
 
 # use fork to remove warning, see https://github.com/metaskills/less-rails/issues/122 and https://github.com/metaskills/less-rails/pull/137
 gem "less-rails", git: 'https://github.com/brendon/less-rails.git', branch: 'fix-sprockets-loading'
@@ -23,13 +23,13 @@ gem 'kaminari'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '>= 5.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.2'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -42,7 +42,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'devise'
+gem 'devise', '>= 4.7.0'
 gem 'test_after_commit', :group => :test # https://github.com/plataformatec/devise/blob/master/CHANGELOG.md#410
 gem 'omniauth'
 gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', branch: 'provide_emails'
@@ -72,23 +72,23 @@ gem 'airbrake'
 gem 'httparty'
 gem 'whenever'
 gem 'rqrcode-rails3'
-gem 'exception_notification'
+gem 'exception_notification', '>= 4.4.0'
 gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
-gem 'rails_autolink'
+gem 'rails_autolink', '>= 1.1.7'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
-gem 'compass-rails'
+gem 'commontator', '~> 4.7.0'
+gem 'compass-rails', '>= 3.1.0'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 1.7.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '>= 3.6.1'
+  gem 'factory_girl_rails', '>= 4.9.0'
   gem 'poltergeist'
   gem 'timecop'
   gem 'capybara-screenshot'
