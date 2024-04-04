@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.1'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -9,27 +9,27 @@ gem 'mysql2', group: :mysql
 gem 'pg', '~> 0.20.0', group: :postgresql # fixed version to avoid warning, see https://stackoverflow.com/questions/44607324/installing-newest-version-of-rails-4-with-postgres-the-pgconn-pgresult-and-p
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'haml-rails'
+gem 'sass-rails', '>= 5.0.8'
+gem 'haml-rails', '>= 2.0.0'
 
 # use fork to remove warning, see https://github.com/metaskills/less-rails/issues/122 and https://github.com/metaskills/less-rails/pull/137
 gem "less-rails", git: 'https://github.com/brendon/less-rails.git', branch: 'fix-sprockets-loading'
 
 gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.1.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '>= 5.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.2'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -39,12 +39,12 @@ gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'sdoc', '>= 1.0.0', require: false
 end
 
-gem 'devise'
+gem 'devise', '>= 4.7.0'
 gem 'test_after_commit', :group => :test # https://github.com/plataformatec/devise/blob/master/CHANGELOG.md#410
-gem 'omniauth'
+gem 'omniauth', '>= 1.7.0'
 gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', branch: 'provide_emails'
 gem 'cancancan'
 gem 'twitter_bootstrap_form_for', git: 'https://github.com/stouset/twitter_bootstrap_form_for.git'
@@ -72,31 +72,31 @@ gem 'airbrake'
 gem 'httparty'
 gem 'whenever'
 gem 'rqrcode-rails3'
-gem 'exception_notification'
-gem 'rack-canonical-host'
+gem 'exception_notification', '>= 4.5.0'
+gem 'rack-canonical-host', '>= 1.0.0'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
-gem 'rails_autolink'
+gem 'rails_autolink', '>= 1.1.7'
 gem 'redcarpet'
-gem 'sanitize'
+gem 'sanitize', '>= 4.6.5'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
-gem 'compass-rails'
+gem 'commontator', '~> 4.7.0'
+gem 'compass-rails', '>= 3.1.0'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 2.1.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'poltergeist'
+  gem 'rspec-rails', '>= 3.6.1'
+  gem 'factory_girl_rails', '>= 4.9.0'
+  gem 'poltergeist', '>= 1.16.0'
   gem 'timecop'
-  gem 'capybara-screenshot'
+  gem 'capybara-screenshot', '>= 1.0.15'
 end
 gem 'awesome_print', group: [:development, :test]
 gem 'commonmarker'
-gem 'rack', '~> 1.6.11'
-gem "sprockets", ">= 3.7.2"
+gem 'rack', '~> 2.2.8', '>= 2.2.8.1'
+gem "sprockets", ">= 3.7.3"
 gem "ffi", ">= 1.9.24"
-gem "loofah", ">= 2.2.3"
-gem "rails-html-sanitizer", ">= 1.0.4"
+gem "loofah", ">= 2.3.0"
+gem "rails-html-sanitizer", ">= 1.1.0"
