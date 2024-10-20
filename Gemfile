@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 7.0.0'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -9,7 +9,7 @@ gem 'mysql2', group: :mysql
 gem 'pg', '~> 0.20.0', group: :postgresql # fixed version to avoid warning, see https://stackoverflow.com/questions/44607324/installing-newest-version-of-rails-4-with-postgres-the-pgconn-pgresult-and-p
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 6.0.0'
 gem 'haml-rails'
 
 # use fork to remove warning, see https://github.com/metaskills/less-rails/issues/122 and https://github.com/metaskills/less-rails/pull/137
@@ -76,15 +76,15 @@ gem 'exception_notification'
 gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
-gem 'rails_autolink'
+gem 'rails_autolink', '>= 1.1.8'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 6.0.0'
 gem 'compass-rails'
 
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '>= 2.1.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'rspec-rails'
