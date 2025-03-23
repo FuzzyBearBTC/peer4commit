@@ -72,7 +72,7 @@ gem 'airbrake'
 gem 'httparty'
 gem 'whenever'
 gem 'rqrcode-rails3'
-gem 'exception_notification'
+gem 'exception_notification', '>= 5.0.0'
 gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
