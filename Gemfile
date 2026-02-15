@@ -49,7 +49,7 @@ gem 'omniauth-github', git: 'https://github.com/alexandrz/omniauth-github.git', 
 gem 'cancancan'
 gem 'twitter_bootstrap_form_for', git: 'https://github.com/stouset/twitter_bootstrap_form_for.git'
 
-gem 'octokit'
+gem 'octokit', '>= 4.23.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
