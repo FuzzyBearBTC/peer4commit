@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -17,7 +17,7 @@ gem "less-rails", git: 'https://github.com/brendon/less-rails.git', branch: 'fix
 
 gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.1.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -77,11 +77,11 @@ gem 'exception_notification'
 gem 'rack-canonical-host'
 gem 'bootstrap_form', '~> 2.3.0' # version 2.4.0 raises a "can't modify frozen string" in gemspec evaluation on old systems
 gem 'html_pipeline_rails'
-gem 'rails_autolink'
+gem 'rails_autolink', '>= 1.1.7'
 gem 'redcarpet'
 gem 'sanitize'
 gem 'twitter-typeahead-rails'
-gem 'commontator', '~> 4.6.0'
+gem 'commontator', '~> 4.7.0'
 gem 'compass-rails'
 
 group :test do
