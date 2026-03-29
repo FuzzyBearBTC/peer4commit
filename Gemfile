@@ -17,7 +17,7 @@ gem "less-rails", git: 'https://github.com/brendon/less-rails.git', branch: 'fix
 
 gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
